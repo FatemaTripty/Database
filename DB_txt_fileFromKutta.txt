@@ -1,0 +1,166 @@
+db1-->
+CREATE TABLE RESTAURANT
+(
+r_code number(10)NOT NULL,
+r_name varchar2(20),
+r_contact number (20) NOT NULL,
+r_email VARCHAR2(20),
+PRIMARY KEY(r_code)
+)
+
+db2-->
+CREATE TABLE BRANCH 
+(
+b_id number(10)NOT NULL,
+b_name varchar2(20),
+b_address varchar2(20),
+b_contuct number(20),
+b_email varchar2(20),
+r_code number(10)NOT NULL,
+PRIMARY KEY(b_id),
+FOREIGN KEY (r_code) REFERENCES RESTAURANT(r_code)
+
+)
+db3-->
+CREATE TABLE BRANCH_1
+(
+b_id number(10)NOT NULL,
+b_name varchar2(20),
+b_address varchar2(20),
+b_contuct number(20),
+s_id number(10)NOT NULL,
+PRIMARY KEY(b_id),
+FOREIGN KEY (s_id) REFERENCES STAFF(s_id)
+
+)
+
+db4-->
+CREATE TABLE STAFF 
+(
+s_id number(10)NOT NULL,
+s_name varchar2(20),
+s_address varchar2(20),
+s_contuct number(20),
+s_email varchar2(20),
+s_rank int,
+s_salary number (10),
+PRIMARY KEY(s_id)
+)
+db5-->
+CREATE TABLE CHEF_1
+(
+ch_work_place varchar2(20),
+ch_contact number(20),
+ch_work_time varchar2(20) ,
+s_id number(10)NOT NULL,
+PRIMARY KEY(ch_contact),
+FOREIGN KEY (s_id) REFERENCES STAFF(s_id)
+
+)
+db6-->
+CREATE TABLE CHEF
+(
+ch_work_place varchar2(20),
+ch_contact number(20),
+ch_work_time varchar2(20) ,
+PRIMARY KEY(ch_contact)
+)
+db7-->
+CREATE TABLE INGREDIENT
+(
+in_name varchar2(20),
+in_price number(10),
+in_tag_no int,
+PRIMARY KEY(in_tag_no)
+)
+db8-->
+CREATE TABLE INGP_CHEF
+(
+ch_contact number(20),
+in_tag_no int,
+PRIMARY KEY(ch_contact),
+FOREIGN KEY (in_tag_no) REFERENCES INGREDIENT (in_tag_no)
+)
+
+db9-->
+CREATE TABLE SUPPLIER
+(
+su_id number(20),
+su_name varchar2(20),
+su_contact number(20),
+PRIMARY KEY(su_id)
+
+)
+db10-->
+CREATE TABLE SUP_INTG
+(
+su_id number(20),
+in_tag_no int,
+PRIMARY KEY(su_id),
+FOREIGN KEY (in_tag_no) REFERENCES INGREDIENT (in_tag_no)
+)
+db11-->
+CREATE TABLE ITEM
+(
+i_name varchar2(20),
+i_no int,
+i_price number(10),
+drink VARCHAR(10),
+dessert VARCHAR(10),
+indian VARCHAR(10),
+chinese VARCHAR(10),
+bengali VARCHAR(10),
+PRIMARY KEY(i_no)
+)
+db12-->
+CREATE TABLE IT_CH
+(
+ch_contact number(20),
+i_no int,
+PRIMARY KEY(i_no)
+)
+db13-->
+CREATE TABLE CUSTOMER
+(
+c_o_no int,
+c_name varchar2(20),
+c_address varchar2(20),
+c_contuct number(20),
+c_email varchar2(20),
+PRIMARY KEY(c_o_no)
+)
+db14-->
+CREATE TABLE CUST_INF
+(
+c_o_no int,
+i_no int,
+PRIMARY KEY(c_o_no)
+)
+db15-->
+CREATE TABLE WAITER
+(
+w_work_place varchar2(20),
+w_contact number(20),
+w_work_time varchar2(20) ,
+PRIMARY KEY(w_contact)
+)
+db16-->
+CREATE TABLE WAI_CU
+(
+w_contact number(20),
+c_o_no int,
+PRIMARY KEY(c_o_no),
+FOREIGN KEY (w_contact) REFERENCES WAITER (w_contact)
+)
+db17-->
+db8-->
+db19-->
+CREATE TABLE BRANCH_M
+(
+branch_id number (10),
+b_name varchar2(20),
+b_address varchar2(20),
+b_contact number(20),
+PRIMARY KEY(branch_id)
+)
+
