@@ -1,0 +1,84 @@
+[1] Department table 
+
+=>
+
+CREATE TABLE DEPARTMENT(
+deptid NUMBER(3) PRIMARY KEY,
+DEPT_NAME VARCHAR(6),
+budget NUMBER(6) DEFAULT 0,
+CHECK  (DEPT_NAME = 'CSE' OR DEPT_NAME = 'EEE' OR DEPT_NAME = 'BBA' OR DEPT_NAME = 'ENG' OR DEPT_NAME = 'ACH' )
+  );
+
+
+
+[2] Course table
+
+=>
+
+CREATE TABLE COURSE(
+crs_id NUMBER(4) PRIMARY KEY,
+crs_name VARCHAR2(20) NOT NULL,
+dept id NUMBER (3),
+FOREIGN KEY(dept_id) REFERENCES DEPARTMENT (deptid)
+);
+
+
+
+[3] Student table
+
+=>
+
+CREATE TABLE STUDENT_MANAGEMENT(
+s_id NUMBER PRIMARY KEY,
+s_name VARCHAR2(20),
+phone NUMBER,
+address VARCHAR2(50),
+email VARCHAR2(30) ,
+credit_completed NUMBER(3),
+course_completed NUMBER(2),
+cgpa NUMBER,
+deptno NUMBER(5),
+gender VARCHAR2(6)
+);
+
+[4] Making s_id as primary key
+
+=> ALTER TABLE STUDENT_MANAGEMENT
+ADD  PRIMARY KEY(s_id);
+
+
+[5] Modifying student name 
+
+=> ALTER TABLE STUDENT_MANAGEMENT
+MODIFY s_name NOT NULL  ;
+
+
+[6] Making email address unique
+
+=> ALTER TABLE STUDENT_MANAGEMENT
+ADD UNIQUE (email)  ;
+
+
+[7] Using foreign key for deptno from department table
+
+=> ALTER TABLE STUDENT_MANAGEMENT
+ADD FOREIGN KEY(deptno) REFERENCES DEPARTMENT (deptid);
+
+[8] Adding consttraint to gender
+
+=> ALTER TABLE STUDENT_MANAGEMENT
+ADD CONSTRAINT CHK CHECK (gender = 'M' OR gender = 'F');
+
+
+[9] Disable primary key from s_id
+
+=>ALTER TABLE STUDENT_MANAGEMENT
+DISABLE PRIMARY KEY; (there is only one primary key in this table.that's why no column name)
+
+
+[10] Droping/deleting/disabling chk's value from gender
+
+=> ALTER TABLE STUDENT_MANAGEMENT
+DROP CONSTRAINT CHK;
+
+

@@ -1,0 +1,34 @@
+MID_LAB_TASK
+
+
+1.	Display first five records in employee table?
+	SELECT * FROM EMP WHERE ROWNUM<=5
+2.	Display COMM in emp table. Display zero in place of null.
+	SELECT COMM,NVL (COMM, 0) FROM EMP
+3.	Display the records in emp table where MGR in 7698,7566 and sal should be greater then 1500
+	  SELECT * FROM EMP WHERE MGR IN(7698,7566 ) AND SAL>1500
+4.	Display all employees with how many years they have been servicing in the company?
+	SELECT ENAME,(SYSDATE-HIREDATE)/365 YEARS FROM EMP
+5.	Display all employees those were not joined in ‘81?
+	SELECT * FROM EMP WHERE HIREDATE NOT BETWEEN '01-JAN-1981' AND '31-DEC-1981'
+6.	Display list of ename those who have joined in Year ‘81 as MANAGER?
+	SELECT * FROM EMP WHERE HIREDATE BETWEEN '01-JAN-1981' AND '31-DEC-1981' AND JOB = 'MANAGER'
+7.	Add 3 months with hiredate in EMP table and display the result?
+	SELECT HIREDATE , ADD_MONTHS(HIREDATE,3) FROM EMP
+8.	Display the date for next TUESDAY in hiredate column?
+	SELECT HIREDATE , NEXT_DAY (HIREDATE,'TUESDAY') 
+ FROM EMP
+9.	Write a query that displays the employee’s names with the first letter capitalized and all other letters lowercase for all employees whose name starts with J, A, or M
+	SELECT INITCAP( ENAME)
+FROM EMP
+WHERE ENAME LIKE 'J%'
+OR ENAME  LIKE 'A%'
+OR ENAME LIKE 'M%'
+ORDER BY ENAME ;
+10.	Display average salary for job SALESMAN
+	SELECT AVG(SAL) FROM EMP WHERE JOB = 'SALESMAN'
+11.	Display sum of salary for each department. The output should be in one record
+	SELECT DEPTNO||'  '||SUM(SAL) "SALARY" FROM EMP GROUP BY DEPTNO
+12.	Display all the records in emp table. The ename should be lower case. The job first character should be upper case and rest of the character in job field should be lower case.
+	SELECT  LOWER(ENAME) ,INITCAP(JOB) FROM EMP
+

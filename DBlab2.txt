@@ -1,0 +1,78 @@
+Exercise:
+
+1.	Create a query to display the name and salary of employees earning more than $2850.
+ SELECT ENAME,SAL FROM EMP WHERE SAL>2850
+
+2.	Create a query to display the employee name and department number for employee number 7566.
+ SELECT ENAME,DEPTNO FROM EMP WHERE EMPNO=7566
+
+3.	Display the employee name, job, and start date of employees hired between February 20, 1981, and May 1, 1981. Order the query in ascending order by start date.
+ SELECT ENAME,JOB,HIREDATE FROM EMP WHERE HIREDATE BETWEEN '20-FEBRUARY-1981' AND '01-MAY-1981'
+
+4.	Display the employee name and department number of all employees in departments 10 and 30 in alphabetical order by name.
+ SELECT ENAME,DEPTNO FROM EMP WHERE  DEPTNO=10 OR DEPTNO=30 ORDER BY ENAME ;
+
+5.	Write a query to list the name and salary of employees who earn more than $1500 and are in department 10 or 30. Label the columns Employee and Monthly Salary, respectively.
+ SELECT ENAME AS "EMPLOYEE",SAL AS "MONTHLY SALARY" FROM EMP WHERE SAL>=1500 AND  (DEPTNO=10 OR DEPTNO=30)
+
+6.	Display the name and hire date of every employee who was hired in 1982.
+ SELECT ENAME,HIREDATE FROM EMP WHERE HIREDATE BETWEEN '01-JAN-1982' AND '31-DEC-1982'
+
+7.	Display the name and job title of all employees who do not have a manager.
+ SELECT ENAME,JOB FROM EMP WHERE JOB NOT IN('MANAGER')
+
+8.	Display the name, salary, and commission for all employees who earn commissions. Sort data in descending order of salary and commissions
+ SELECT ENAME,SAL,COMM FROM EMP WHERE COMM IS NOT NULL  ORDER BY SAL,COMM DESC;
+
+
+
+
+
+[Lab practice 2]
+
+1.	Display all the records in emp table.
+ SELECT * FROM EMP
+
+2.	Display all the records in emp table where employee belongs to deptno 10
+ SELECT * FROM EMP WHERE DEPTNO=10
+
+3.	Display all the records in emp table where employee does not belong to deptno 30
+ SELECT * FROM EMP WHERE DEPTNO !=30
+
+4.	Display emp table with salary descending order
+ SELECT *FROM EMP ORDER BY SAL DESC
+
+5.	Display all the records in emp table order by ascending deptno, descending salary.
+ SELECT *FROM EMP ORDER BY DEPTNO ASC , SAL DESC
+
+6.	Display all employees those who were joined in year 1981
+ SELECT ENAME,HIREDATE FROM EMP WHERE HIREDATE BETWEEN '01-JAN-1981' AND '31-DEC-1981'
+
+7.	Display the records in emp table where MGR in 7698,7566 and sal should be greater than 1500
+ SELECT * FROM EMP WHERE MGR IN (7698,7566) AND SAL>=1500
+
+8.	Display all employees where employees hired before 01-JAN-1981 .
+ SELECT *FROM EMP WHERE HIREDATE < '01-JAN-1981'
+
+9.	Display all the records in emp table where employee hired after 28-SEP-81 and before 03-DEC-81?
+ SELECT *FROM EMP WHERE HIREDATE >'28-SEP-81' AND HIREDATE < '31-DEC-1981'
+
+10.	Write a query that displays the employee’s names whose name starts with J, A, or M
+ SELECT ENAME FROM EMP WHERE ENAME LIKE 'J%' OR ENAME LIKE'A%' OR ENAME LIKE'M%'
+
+11.	Display all employees where ename start with J and ends with S
+  SELECT ENAME FROM EMP WHERE ENAME LIKE 'J%' AND ENAME LIKE'%S'
+
+12.	Write a query to display the employee name, department name of all employees who earn a commission
+ SELECT ENAME,DNAME FROM EMP, DEPT WHERE COMM IS NOT NULL
+
+13.	Display ename, sal, grade. Use emp, salgrade table
+ SELECT ENAME,SAL,GRADE FROM EMP, SALGRADE
+
+14.	Display all employees where employee does not belong to 10,20,40 departments.
+ SELECT * FROM EMP WHERE DEPTNO NOT IN(10,20,40)
+
+15.	Display all employees where jobs does not belong to PRESIDENT and MANAGER.
+ SELECT * FROM EMP WHERE JOB NOT IN('PRESIDENT','MANAGER')
+
+
